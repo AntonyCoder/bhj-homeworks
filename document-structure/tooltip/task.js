@@ -1,19 +1,4 @@
-// let tooltip = Array.from(document.querySelectorAll('.has-tooltip'));
-// let hint = document.querySelector('.tooltip');
-
-// tooltip.forEach((item) => {
-//     item.addEventListener('click', (e) => {
-//         e.preventDefault();
-//         hint.innerText = `${item.title}`;
-//         hint.classList.toggle('tooltip_active');
-
-//         let xPosition = item.getBoundingClientRect().left;
-//         let yPosition = item.getBoundingClientRect().top;
-
-//         hint.style.top = `${yPosition + 20}px`;
-//         hint.style.left = `${xPosition}px`;
-//     });
-// })
+'use strict';
 
 let tooltip = Array.from(document.querySelectorAll('.has-tooltip'));
 let hint = document.createElement('div');
@@ -25,13 +10,17 @@ tooltip.forEach((item) => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
 
-        hint.innerText = `${item.title}`;
-        hint.classList.toggle('tooltip_active');
-
-        let xPosition = item.getBoundingClientRect().left;
-        let yPosition = item.getBoundingClientRect().top;
-
-        hint.style.top = `${yPosition + 20}px`;
-        hint.style.left = `${xPosition}px`;
+        if (hint.classList.contains('tooltip_active') && hint.textContent !== item.title){
+            hint.classList.remove('tooltip_active');
+        }
+            hint.textContent = item.title;
+            
+            let xPosition = item.getBoundingClientRect().left;
+            let yPosition = item.getBoundingClientRect().top;
+            
+            hint.style.top = `${yPosition + 20}px`;
+            hint.style.left = `${xPosition}px`;
+            
+            hint.classList.toggle('tooltip_active');
     });
 })

@@ -10,15 +10,20 @@ form.addEventListener('submit', (e) => {
     let task = document.createElement('div');
     task.classList.add('task');
 
-    task.innerHTML = `<div class="task__title">${input.value}</div><a href="#" class="task__remove">&times;</a>`;
 
-    tasksList.append(task);
+    if(input.value.trim() === '') {
+        return;
+    } else {
+        task.innerHTML = `<div class="task__title">${input.value.trim()}</div><a href="#" class="task__remove">&times;</a>`;
+        tasksList.append(task);
+    }
 
     input.value = '';
 });
 
 tasksList.addEventListener('click', (e) => {
-    if (e.target = "a.task__remove"){
+    console.log(e.target.classList.value);
+    if (e.target.classList.value === "task__remove"){
         let link = e.target;
         link.closest('.task').remove();
     }
