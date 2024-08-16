@@ -22,11 +22,12 @@ formBtn.addEventListener('click', (e) => {
     const formData = new FormData(formSingin);
 
     xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
+    xhr.responseType = 'json';
     xhr.send(formData);
     xhr.onload = () => {
 
-        if (JSON.parse(xhr.response).success === true) {
-            let userIdAuth = JSON.parse(xhr.response).user_id;
+        if (xhr.response.success === true) {
+            let userIdAuth = xhr.response.user_id;
             localStorage.setItem('id', userIdAuth);
             userId.textContent = userIdAuth;
 

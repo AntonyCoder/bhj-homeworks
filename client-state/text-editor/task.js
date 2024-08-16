@@ -4,9 +4,14 @@ const textareaContent = document.getElementById('editor');
 const storedText = localStorage.getItem('text');
 const clearButton = document.getElementById('btn');
 
-setInterval(() => {
+
+textareaContent.addEventListener('input', () => {
     localStorage.setItem('text', textareaContent.value);
-}, 1)
+})
+
+// setInterval(() => {
+//     localStorage.setItem('text', textareaContent.value);
+// }, 1)
 
 textareaContent.value = storedText;
 
