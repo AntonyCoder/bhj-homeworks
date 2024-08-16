@@ -3,6 +3,7 @@
 }
 .signin_active {
   display: block;
+  width: 100%;
 }
 .control {
     width: 100%;
@@ -44,4 +45,21 @@
 .welcome_active {
   display: block;
   text-align: center;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout {
+  display: none;
+  margin-top: 25px;
+
+}
+
+.logout_active {
+  display: inline-block;
+  
 }
